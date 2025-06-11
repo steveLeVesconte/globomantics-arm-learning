@@ -37,4 +37,4 @@ jobs:
         uses: Azure/cli@v2.1.0
         with:
           inlineScript: |
-            az deployment sub create --location westus --template-file ./arm-templates/resourcegroup.json 
+            az deployment sub create --location westus --template-file .github/workflows/arm-templates/resourcegroup.json
