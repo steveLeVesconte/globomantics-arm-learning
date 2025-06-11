@@ -3,6 +3,9 @@ name: armTemplateDeployment #CI
 
 # Controls when the workflow will run
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -29,3 +32,10 @@ jobs:
   #      run: |
   #        echo Add other actions to build,
   #        echo test, and deploy your project.
+      - name: Deploy Resource Group rg-github-actions with AZ CLI
+      
+        uses: Azure/cli@v2.1.0
+        with:
+          inlineScript: |
+            az group create --name rg-github-actions --location westus
+            az deployment sub create --location westus --template-file ./armTemplates/resourceGroup.json 
