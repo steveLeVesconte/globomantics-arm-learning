@@ -34,7 +34,7 @@ jobs:
           region: (US) West US
           resourceGroupName: rg-github-actions
           template: ./arm-templates/resourcegroup.json
-          parameters: ./azuredeploy.parameters.json
+         # parameters: ./azuredeploy.parameters.json
           deploymentName: rg-github-actions-deployment
           location: westus
           deploymentMode: Incremental  # default is Incremental, can also be Complete
