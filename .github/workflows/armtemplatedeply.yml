@@ -32,9 +32,9 @@ jobs:
           scope: subscription
           subscriptionId: 13400b0a-b2f7-409d-99a6-0c5dee058434
           region: (US) West US
-          resource-group-name: rg-github-actions
+          resourceGroupName: rg-github-actions
           template: ./arm-templates/resourcegroup.json
           parameters: ./azuredeploy.parameters.json
-          deployment-name: rg-github-actions-deployment
+          deploymentName: rg-github-actions-deployment
           location: westus
-          deployment-mode: Incremental  # default is Incremental, can also be Complete
+          deploymentMode: Incremental  # default is Incremental, can also be Complete
