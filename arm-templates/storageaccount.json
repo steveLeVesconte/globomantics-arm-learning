@@ -2,7 +2,22 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
 
-    "parameters": {},
+    "parameters": {
+        "location": {
+            "type": "string",
+            "defaultValue": "westus",
+            "metadata": {
+                "description": "Enter the location to deploy the resource to."
+            }
+        },
+        "resourceGroupName": {
+            "type": "string",
+            "defaultValue": "rg-github-actions",
+            "metadata": {
+                "description": "Enter the name of the resource group to create."
+            }
+        }
+    },
  
     "functions": [],
     "variables": {},
@@ -11,7 +26,7 @@
             "name": "[concat('sa', uniqueString(resourceGroup().id))]",
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2023-01-01",
-            "location": "westus",
+            "location": "[parameters('location')]",
             "sku": {
                 "name": "Standard_LRS"
             },
