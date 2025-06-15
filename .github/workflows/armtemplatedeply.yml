@@ -38,21 +38,21 @@ jobs:
           template: ./arm-templates/resourcegroup.json
           deploymentName: rg-github-actions-deployment
  
-      - name: Wait for resource group
+      # - name: Wait for resource group
 
-        run: az group exists -n rg-github-actions
+      #   run: az group exists -n rg-github-actions
         
 
-      - name: Deploy Storage Account
-        uses: Azure/arm-deploy@v2
-        with:
-          scope: resourcegroup
-          resourceGroupName: rg-github-actions
-          #subscriptionId: 13400b0a-b2f7-409d-99a6-0c5dee058434
+      # - name: Deploy Storage Account
+      #   uses: Azure/arm-deploy@v2
+      #   with:
+      #     scope: resourcegroup
+      #     resourceGroupName: rg-github-actions
+      #     subscriptionId: 13400b0a-b2f7-409d-99a6-0c5dee058434
 
-          template: ./arm-templates/storageaccount2.json
+      #     template: ./arm-templates/storageaccount2.json
 
-          deploymentMode: Incremental  
-        env:
-          ACTIONS_STEP_DEBUG: true
-          AZURE_CORE_LOG_LEVEL: debug
+      #     deploymentMode: Incremental  
+      #   env:
+      #     ACTIONS_STEP_DEBUG: true
+      #     AZURE_CORE_LOG_LEVEL: debug
