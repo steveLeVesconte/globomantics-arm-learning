@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "storageAccountName": {
-            "value": "globostg001" 
+            "value": "globostg001stevelev20250615" 
         },
         "location": {
             "value": "westus" 
