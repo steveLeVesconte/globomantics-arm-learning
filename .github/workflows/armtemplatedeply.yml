@@ -43,7 +43,7 @@ jobs:
         with:
           scope: resourcegroup
           resourceGroupName: rg-github-actions
-          subscriptionId: 13400b0a-b2f7-409d-99a6-0c5dee058434
+          #subscriptionId: 13400b0a-b2f7-409d-99a6-0c5dee058434
 
           template: ./arm-templates/storageaccount.json
           parameters: ./arm-templates/storageaccount.parameters.json
