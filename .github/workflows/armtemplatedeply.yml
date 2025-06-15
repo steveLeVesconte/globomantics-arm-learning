@@ -46,6 +46,8 @@ jobs:
           region: West US
           resourceGroupName: rg-github-actions
           template: ./arm-templates/storageaccount.json
-          parameters: ./arm-templates/storageaccount.parameters.json
+          parameters:
+             ./arm-templates/storageaccount.parameters.json
+             storageAccountName = saxyz1234zza
 
           deploymentName: rg-github-actions-storage-deployment
