@@ -41,6 +41,7 @@ jobs:
 
       - name: Deploy Storage Account
         uses: Azure/arm-deploy@v2
+        id: deployStorageAccount
         with:
           scope: resourcegroup
           region: West US
@@ -51,3 +52,8 @@ jobs:
              storageAccountName=saxyz1234zza
 
           deploymentName: rg-github-actions-storage-deployment
+
+      - run: echo "BlobUri"
+      - run: echo  ${{ steps.deployStorageAccount.outputs.BlobUri }}
+        # This will output the storage account name from the deployment step
+        # You can use this output in subsequent steps if needed
