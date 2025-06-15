@@ -38,3 +38,20 @@ jobs:
           deploymentName: rg-github-actions-deployment
          # location: westus
          # deploymentMode: Incremental  # default is Incremental, can also be Complete
+
+
+
+      - name: Deploy Storage Account
+        uses: Azure/arm-deploy@v2
+        with:
+          scope: resourceGroup
+          resourceGroupName: rg-github-actions
+          #subscriptionId: 13400b0a-b2f7-409d-99a6-0c5dee058434
+         # region: West US
+          #resourceGroupName: rg-github-actions
+          template: ./arm-templates/storageaccount.json
+          parameters: ./arm-templates/storageaccount.parameters.json
+          deploymentMode: Incremental  # default is Incremental, can also be Complete
+          #deploymentName: rg-github-actions-deployment
+         # location: westus
+         # deploymentMode: Incremental  # default is Incremental, can also be Complete
