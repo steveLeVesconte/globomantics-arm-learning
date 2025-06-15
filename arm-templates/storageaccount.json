@@ -39,11 +39,11 @@
     "variables": {},
     "resources": [
         {
-            "name": "globostg001stevelev20250615forced",
+            "name": "stevelev20250615forced",
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2023-05-01",
             "tags": {
-                "displayName": "globostg001stevelev20250615forced"
+                "displayName": "stevelev20250615forced"
             },
             "location": "westus",
             "kind": "StorageV2",
