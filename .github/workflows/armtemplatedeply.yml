@@ -16,6 +16,8 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - name: List files for debugging
+        run: ls -R
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
       - name: Azure Login
@@ -23,9 +25,6 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-
-
-      
       - name: Deploy Resource Group rg-github-actions
         uses: Azure/arm-deploy@v2
         with:
@@ -34,24 +33,15 @@ jobs:
           region: West US
           resourceGroupName: rg-github-actions
           template: ./arm-templates/resourcegroup.json
-         # parameters: ./azuredeploy.parameters.json
           deploymentName: rg-github-actions-deployment
-         # location: westus
-         # deploymentMode: Incremental  # default is Incremental, can also be Complete
-
-
-
+ 
       - name: Deploy Storage Account
         uses: Azure/arm-deploy@v2
         with:
           scope: resourcegroup
           resourceGroupName: rg-github-actions
           subscriptionId: 13400b0a-b2f7-409d-99a6-0c5dee058434
-         # region: West US
-          #resourceGroupName: rg-github-actions
+
           template: ./arm-templates/storageaccount.json
           parameters: ./arm-templates/storageaccount.parameters.json
-          deploymentMode: Incremental  # default is Incremental, can also be Complete
-          #deploymentName: rg-github-actions-deployment
-         # location: westus
-         # deploymentMode: Incremental  # default is Incremental, can also be Complete
+          deploymentMode: Incremental  
