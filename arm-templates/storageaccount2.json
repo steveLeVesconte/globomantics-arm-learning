@@ -11,7 +11,7 @@
         "tags": {
             "displayName": "sacctsl20250615"
         },
-        "location": "[resourceGroup().location]",
+        "location": "westus",
         "kind": "StorageV2",
         "sku": {
             "name": "Standard_LRS",
