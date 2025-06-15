@@ -46,6 +46,6 @@ jobs:
           subscriptionId: 13400b0a-b2f7-409d-99a6-0c5dee058434
           region: West US
           resourceGroupName: rg-github-actions
-          template: ./arm-templates/storeageaccount.json
-         # parameters: ./azuredeploy.parameters.json
+          template: ./arm-templates/storageaccount.json
+
           deploymentName: rg-github-actions-storage-deployment
