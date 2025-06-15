@@ -15,6 +15,12 @@
             "metadata": {
                 "description": "Enter the sku name of the storage account to create. "
             }
+        },
+        "storageAccountName": {
+            "type": "string",
+            "metadata": {
+                "description": "Enter the sku name of the storage account to create. "
+            }
         }
     },
  
@@ -22,7 +28,7 @@
     "variables": {},
     "resources": [
         {
-            "name": "[concat('sa', uniqueString(resourceGroup().id))]",
+            "name": "[parameters('storageAccountName')]",
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2023-01-01",
             "location": "[parameters('location')]",
