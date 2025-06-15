@@ -53,3 +53,6 @@ jobs:
           template: ./arm-templates/storageaccount.json
           parameters: ./arm-templates/storageaccount.parameters.json
           deploymentMode: Incremental  
+        env:
+          ACTIONS_STEP_DEBUG: true
+          AZURE_CORE_LOG_LEVEL: debug
