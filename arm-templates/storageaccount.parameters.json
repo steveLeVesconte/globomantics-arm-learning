@@ -5,6 +5,9 @@
         "storageAccountName": {
             "value": "globostg001stevelev20250615" 
         },
+        "displayName": {
+            "value": "globostg001stevelev20250615" 
+        },
         "location": {
             "value": "westus" 
         },
