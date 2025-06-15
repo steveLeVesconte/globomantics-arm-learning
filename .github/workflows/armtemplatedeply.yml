@@ -42,7 +42,7 @@ jobs:
       - name: Deploy Storage Account
         uses: Azure/arm-deploy@v2
         with:
-          scope: resourceGroup
+          scope: resourcegroup
           region: West US
           resourceGroupName: rg-github-actions
           template: ./arm-templates/storageaccount.json
