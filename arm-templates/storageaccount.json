@@ -46,7 +46,7 @@
     "outputs": {
         "BlobUri": {
             "type": "string",
-            "value": "https://[concat(parameters('storageAccountName'), '.blob.core.windows.net')]"
+            "value": "[reference(resourceId('Microsoft.Storage/storageAccounts/', parameters('storageAccountName'))).primaryEndpoints.blob]"
         }
     }
 }
