@@ -38,6 +38,11 @@ jobs:
           template: ./arm-templates/resourcegroup.json
           deploymentName: rg-github-actions-deployment
  
+      - name: Wait for resource group
+
+        run: az group exists -n rg-github-actions
+        
+
       - name: Deploy Storage Account
         uses: Azure/arm-deploy@v2
         with:
