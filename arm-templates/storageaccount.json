@@ -5,7 +5,7 @@
     "parameters": {
         "location": {
             "type": "string",
-            "defaultValue": "westus",
+            "defaultValue": "ccccccc",
             "metadata": {
                 "description": "Enter the location to deploy the resource to."
             }

@@ -45,6 +45,7 @@ jobs:
           scope: resourcegroup
           region: West US
           resourceGroupName: rg-github-actions
-          template: ./arm-templates/storageaccount.json
+          template: ./arm-templates/storageaccount.json,
+          parameters: ./arm-templates/storageaccount.parameters.json
 
           deploymentName: rg-github-actions-storage-deployment
