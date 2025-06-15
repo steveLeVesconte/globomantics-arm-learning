@@ -6,7 +6,7 @@
             "value": "globostg001" 
         },
         "location": {
-            "value": "westus" // TODO: Fill in parameter value
+            "value": "westus" 
         },
         "sku": {
             "value": "Standard_LRS"
