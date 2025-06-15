@@ -39,13 +39,13 @@
     "variables": {},
     "resources": [
         {
-            "name": "[parameters('storageAccountName')]",
+            "name": "globostg001stevelev20250615forced",
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2023-05-01",
             "tags": {
-                "displayName": "[parameters('displayName')]"
+                "displayName": "globostg001stevelev20250615forced"
             },
-            "location": "[parameters('location')]",
+            "location": "westus",
             "kind": "StorageV2",
             "sku": {
                 "name": "[parameters('sku')]",

@@ -25,7 +25,7 @@
             "name": "[parameters('resourceGroupName')]",
             "type": "Microsoft.Resources/resourceGroups",
             "apiVersion": "2024-08-01",
-            "location": "[parameters('location')]",
+            "location": "Standard_LRS",
             "dependsOn": [],
             "tags": {}
         }
