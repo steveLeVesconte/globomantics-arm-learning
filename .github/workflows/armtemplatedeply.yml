@@ -25,6 +25,9 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
+      - name: List files for debugging after checkout
+        run: ls -R
+
       - name: Deploy Resource Group rg-github-actions
         uses: Azure/arm-deploy@v2
         with:
