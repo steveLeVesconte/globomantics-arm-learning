@@ -5,7 +5,6 @@
     "parameters": {
         "location": {
             "type": "string",
-            "defaultValue": "ccccccc",
             "metadata": {
                 "description": "Enter the location to deploy the resource to."
             }
