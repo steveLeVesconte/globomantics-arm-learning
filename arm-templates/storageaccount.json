@@ -9,11 +9,11 @@
                 "description": "Enter the location to deploy the resource to."
             }
         },
-        "resourceGroupName": {
+        
+        "skuName": {
             "type": "string",
-            "defaultValue": "rg-github-actions",
             "metadata": {
-                "description": "Enter the name of the resource group to create."
+                "description": "Enter the sku name of the storage account to create. "
             }
         }
     },
@@ -27,7 +27,7 @@
             "apiVersion": "2023-01-01",
             "location": "[parameters('location')]",
             "sku": {
-                "name": "Standard_LRS"
+                "name": "[parameters('skuName')]"
             },
             "kind": "StorageV2",
             "properties": {

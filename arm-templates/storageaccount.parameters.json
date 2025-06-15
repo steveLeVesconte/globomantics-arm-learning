@@ -4,6 +4,9 @@
     "parameters": {
         "location": {
             "value": "westus"
+        },
+        "skuName": {
+            "value": "Standard_LRS"
         }
     }
 }
