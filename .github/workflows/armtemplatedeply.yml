@@ -50,7 +50,7 @@ jobs:
           resourceGroupName: rg-github-actions
           #subscriptionId: 13400b0a-b2f7-409d-99a6-0c5dee058434
 
-          template: ./arm-templates/storageaccount.json
+          template: ./arm-templates/storageaccount2.json
 
           deploymentMode: Incremental  
         env:
