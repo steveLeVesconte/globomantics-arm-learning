@@ -44,7 +44,7 @@ jobs:
       - name: Deploy Storage Account
         uses: Azure/arm-deploy@v2
         with:
-          scope: resourceGroup
+          scope: resourcegroup
           resourceGroupName: rg-github-actions
           #subscriptionId: 13400b0a-b2f7-409d-99a6-0c5dee058434
          # region: West US
