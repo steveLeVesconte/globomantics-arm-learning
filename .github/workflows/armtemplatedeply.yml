@@ -66,6 +66,6 @@ jobs:
           template: ./arm-templates/virtualmachine.json
           parameters: |
             adminUsername=myadmin
-            adminPublicKey=${{ secrets.AZURE_ADMIN_PUBLIC_KEY }}
+            adminPublicKey="${{ secrets.AZURE_ADMIN_PUBLIC_KEY }}""
             location=westus
             vmSize=Standard_B1s
