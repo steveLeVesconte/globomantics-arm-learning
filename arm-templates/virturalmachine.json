@@ -2,15 +2,28 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "adminPassword": {
-            "type": "securestring",
-            "metadata": {
-                "description": "Enter the password for the admin user."
-            }
-        },
+
+        "location": { "type": "string" },
+        "adminUsername": { "type": "string" },
+        "adminPublicKey": { "type": "string" },
+
+        "vmSize": {
+            "type": "string",
+            "defaultValue": "Standard_B1s"
+        }
     },
     "functions": [],
-    "variables": {},
+    "variables": {
+        "networkSecurityGroupName": "nsg-vm",
+        "publicIPAddressName": "pip-vm",
+        "networkSecurityGroupName2": "nsg-subnet",
+        "vNetName": "vnet-vm",
+        "vNetSubnetName": "default",
+        "vNetAddressPrefixes": "10.0.0.0/16",
+        "vNetSubnetAddressPrefix": "10.0.0.0/24",
+        "networkInterfaceName": "nic-vm",
+        "vmName": "vm-hello"
+    },
     "resources": [
         {
             "type": "Microsoft.Network/networkSecurityGroups",
@@ -30,6 +43,20 @@
                             "destinationAddressPrefix": "*",
                             "access": "Allow",
                             "priority": 123,
+                            "direction": "Inbound"
+                        }
+                    },
+                    {
+                        "name": "http_rule",
+                        "properties": {
+                            "description": "Allow HTTP inbound",
+                            "protocol": "Tcp",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "80",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 124,
                             "direction": "Inbound"
                         }
                     }
@@ -170,6 +197,24 @@
                             "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('networkInterfaceName'))]"
                         }
                     ]
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "apiVersion": "2022-08-01",
+            "name": "[concat(variables('vmName'), '/customScript')]",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Compute/virtualMachines', variables('vmName'))]"
+            ],
+            "properties": {
+                "publisher": "Microsoft.Azure.Extensions",
+                "type": "CustomScript",
+                "typeHandlerVersion": "2.1",
+                "autoUpgradeMinorVersion": true,
+                "settings": {
+                    "commandToExecute": "bash -c 'apt-get update && apt-get install -y nginx && echo \"hello world\" > /var/www/html/index.html && systemctl restart nginx'"
                 }
             }
         }

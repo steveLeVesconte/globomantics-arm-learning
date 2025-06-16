@@ -57,3 +57,15 @@ jobs:
       - run: echo  ${{ steps.deployStorageAccount.outputs.BlobUri }}
         # This will output the storage account name from the deployment step
         # You can use this output in subsequent steps if needed
+      - name: Deploy ARM Template
+        uses: Azure/arm-deploy@v2
+        with:
+          scope: resourcegroup
+          region: West US
+          resourceGroupName: rg-github-actions
+          template: ./arm-templates/virtualmachine.json
+          parameters: |
+            adminUsername=myadmin
+            adminPublicKey=${{ secrets.AZURE_ADMIN_PUBLIC_KEY }}
+            location=westus
+            vmSize=Standard_B1s
