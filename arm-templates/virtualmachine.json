@@ -94,6 +94,20 @@
                             "sourcePortRange": "*",
                             "destinationAddressPrefix": "*"
                         }
+                    },
+                    {
+                        "name": "http_rule",
+                        "properties": {
+                            "description": "Allow HTTP inbound",
+                            "protocol": "Tcp",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "80",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 124,
+                            "direction": "Inbound"
+                        }
                     }
                 ]
             }
@@ -213,7 +227,16 @@
                 "typeHandlerVersion": "2.1",
                 "autoUpgradeMinorVersion": true,
                 "settings": {
-                    "commandToExecute": "bash -c 'apt-get update && apt-get install -y nginx && echo \"hello world\" > /var/www/html/index.html && systemctl restart nginx'"
+                    "settings": {
+                        "commandToExecute": "bash -c 'set -eux\\n\
+export DEBIAN_FRONTEND=noninteractive\\n\
+until apt-get update; do sleep 2; done\\n\
+until apt-get install -y nginx; do sleep 2; done\\n\
+systemctl enable nginx\\n\
+systemctl start nginx\\n\
+echo \"hello world\" > /var/www/html/index.html\\n\
+systemctl restart nginx\\n'"
+                    }
                 }
             }
         }
