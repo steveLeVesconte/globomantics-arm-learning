@@ -8,6 +8,15 @@ on:
       - add-storage-account
   workflow_dispatch:
 
+env:
+  # Set the Azure subscription ID as an environment variable
+  AZURE_SUBSCRIPTION_ID: '13400b0a-b2f7-409d-99a6-0c5dee058434'
+  # Set the Azure resource group name as an environment variable
+  AZURE_RESOURCE_GROUP: 'rg-github-actions' 
+  LOCATION: 'westus' # Set the Azure location as an environment variable
+  REGION: West US # Set the Azure region as an environment variable
+
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   armDeploy: #build:
@@ -26,13 +35,13 @@ jobs:
 
 
       
-      - name: Deploy Resource Group rg-github-actions
+      - name: Deploy Resource Group ${{ env.AZURE_RESOURCE_GROUP}}
         uses: Azure/arm-deploy@v2
         with:
           scope: subscription
-          subscriptionId: 13400b0a-b2f7-409d-99a6-0c5dee058434
-          region: West US
-          resourceGroupName: rg-github-actions
+          subscriptionId: ${{ env.AZURE_SUBSCRIPTION_ID }}
+          region: "${{ env.REGION }}"
+          resourceGroupName: ${{ env.AZURE_RESOURCE_GROUP}}
           template: ./arm-templates/resourcegroup.json
          # parameters: ./azuredeploy.parameters.json
           deploymentName: rg-github-actions-deployment
@@ -44,8 +53,8 @@ jobs:
         id: deployStorageAccount
         with:
           scope: resourcegroup
-          region: West US
-          resourceGroupName: rg-github-actions
+          region: "${{ env.REGION }}"
+          resourceGroupName: ${{ env.AZURE_RESOURCE_GROUP}}
           template: ./arm-templates/storageaccount.json
           parameters:
              ./arm-templates/storageaccount.parameters.json
@@ -61,7 +70,7 @@ jobs:
         uses: Azure/arm-deploy@v2
         with:
           scope: resourcegroup
-          region: West US
-          resourceGroupName: rg-github-actions
+          region: "${{ env.REGION }}"
+          resourceGroupName: ${{ env.AZURE_RESOURCE_GROUP}}
           template: ./arm-templates/virtualmachine.json
-          parameters:  adminUsername=myadmin adminPublicKey="${{ secrets.AZURE_ADMIN_PUBLIC_KEY }}" location=westus vmSize=Standard_B1s
+          parameters:  adminUsername=myadmin adminPublicKey="${{ secrets.AZURE_ADMIN_PUBLIC_KEY }}" location=${{ env.LOCATION}} vmSize=Standard_B1s
