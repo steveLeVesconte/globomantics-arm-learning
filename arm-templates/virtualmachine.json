@@ -228,14 +228,8 @@
                 "autoUpgradeMinorVersion": true,
 
                 "settings": {
-                    "commandToExecute": "bash -c 'set -eux\\\\n\
-export DEBIAN_FRONTEND=noninteractive\\\\n\
-until apt-get update; do sleep 2; done\\\\n\
-until apt-get install -y nginx; do sleep 2; done\\\\n\
-systemctl enable nginx\\\\n\
-systemctl start nginx\\\\n\
-echo \"hello world\" > /var/www/html/index.html\\\\n\
-systemctl restart nginx\\\\n'"
+                    "commandToExecute": "bash -c 'set -eux && export DEBIAN_FRONTEND=noninteractive && until apt-get update; do sleep 2; done && until apt-get install -y nginx; do sleep 2; done && systemctl enable nginx && systemctl start nginx && echo \"hello world\" > /var/www/html/index.html && systemctl restart nginx'"
+
 
                 }
             }
