@@ -226,9 +226,9 @@
                 "type": "CustomScript",
                 "typeHandlerVersion": "2.1",
                 "autoUpgradeMinorVersion": true,
+
                 "settings": {
-                    "settings": {
-                        "commandToExecute": "bash -c 'set -eux\\n\
+                    "commandToExecute": "bash -c 'set -eux\\n\
 export DEBIAN_FRONTEND=noninteractive\\n\
 until apt-get update; do sleep 2; done\\n\
 until apt-get install -y nginx; do sleep 2; done\\n\
@@ -236,7 +236,7 @@ systemctl enable nginx\\n\
 systemctl start nginx\\n\
 echo \"hello world\" > /var/www/html/index.html\\n\
 systemctl restart nginx\\n'"
-                    }
+
                 }
             }
         }
