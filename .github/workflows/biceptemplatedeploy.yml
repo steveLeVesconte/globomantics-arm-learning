@@ -29,14 +29,14 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Deploy Resource Group ${{ env.AZURE_RESOURCE_GROUP}}
-        uses: Azure/cli@v1
+        uses: Azure/cli@v1.0.4
         with:
           inlineScript: |
             az group create --name ${{ env.AZURE_RESOURCE_GROUP }} --location "${{ env.LOCATION }} --template-file ./bicep-templates/resourcegroup.bicep --parameters location="${{ env.LOCATION }}" --subscription ${{ env.AZURE_SUBSCRIPTION_ID }} resourceGroupName=${{ env.AZURE_RESOURCE_GROUP }} deploymentName=rg-github-actions-deployment location="${{ env.LOCATION }}"
           
 
       - name: Deploy virtual network
-        uses: Azure/cli@v1
+        uses: Azure/cli@v1.0.4
         with:
           inlineScript: |
             az deployment group create --resource-group ${{ env.AZURE_RESOURCE_GROUP }} --template-file ./bicep-templates/virtualnetwork.bicep --parameters location="${{ env.LOCATION }}" vNetPrefix="bicepazcli" deploymentName=rg-github-actions-vnet-deployment
