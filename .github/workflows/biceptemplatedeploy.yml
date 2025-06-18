@@ -41,6 +41,7 @@ jobs:
           inlineScript: |
             az deployment group create \
               --resource-group ${{ env.AZURE_RESOURCE_GROUP }} \
+              --subscription ${{ env.AZURE_SUBSCRIPTION_ID }} \
               --template-file ./bicep-templates/resourcegroup.bicep \
               --parameters location="${{ env.LOCATION }}" \
               --name rg-github-actions-deployment
