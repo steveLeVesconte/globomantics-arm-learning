@@ -32,4 +32,4 @@ jobs:
         uses: azure/CLI@v1
         with:
           inlineScript: |
-            az deployment group create --resource-group ${{ env.AZURE_RESOURCE_GROUP }} --template-file ./bicep-templates/virtualnetwork.bicep --parameters location="${{ env.LOCATION }}" vNetPrefix="bicepazcli" deploymentName=rg-github-actions-vnet-deployment
+            az deployment group create --resource-group ${{ env.AZURE_RESOURCE_GROUP }} --template-file ./bicep-templates/virtualnetwork.bicep --parameters location="${{ env.LOCATION }}" vNetPrefix="bicepazcli" 
