@@ -3,9 +3,7 @@ name: armTemplateDeployment #CI
 
 # Controls when the workflow will run
 on:
-  push:
-    branches:
-      - add-storage-account
+
   workflow_dispatch:
 
 env:
